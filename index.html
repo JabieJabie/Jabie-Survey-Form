@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Simple Google Form</title>
+  <meta charset="UTF-8">
+  <title>Jabie GYM</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,6 +16,17 @@
       margin: auto;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: #218838;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 20px;
     }
     label {
       display: block;
@@ -33,17 +45,28 @@
     }
     fieldset {
       margin-top: 20px;
-      padding: 10px;
+      padding: 15px;
       border-radius: 5px;
       border: 1px solid #ddd;
     }
+    fieldset label {
+      display: inline-block;
+      margin-top: 5px;
+      margin-right: 15px;
+      font-weight: normal;
+      cursor: pointer;
+    }
     button {
+      display: block;
+      width: 100%;
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 12px 20px;
       background: #28a745;
       color: white;
       border: none;
       border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
     }
     button:hover {
@@ -53,9 +76,12 @@
 </head>
 <body>
 
-<form id="googleForm">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" required>
+<form id="healthFairForm">
+  <h2>Jabie GYM</h2>
+  <p>Help us tailor our summer classes! Take 30 seconds to fill out this quick survey.</p>
+
+  <label for="name">Full Name</label>
+  <input type="text" name="name" id="name" placeholder="e.g. Alex Mercer" required>
 
   <label for="gender">Gender</label>
   <select name="gender" id="gender">
@@ -65,23 +91,26 @@
   </select>
 
   <fieldset>
-    <legend>Age Group</legend>
+    <legend><strong>Age Group</strong></legend>
     <label><input type="radio" name="ageGroup" value="Under 18"> Under 18</label>
     <label><input type="radio" name="ageGroup" value="18-30"> 18-30</label>
     <label><input type="radio" name="ageGroup" value="31-50"> 31-50</label>
     <label><input type="radio" name="ageGroup" value="51+"> 51+</label>
   </fieldset>
 
-  <label for="comments">Comments</label>
-  <textarea name="comments" id="comments" rows="4"></textarea>
+  <label for="comments">What classes or gym features would you like to see?</label>
+  <textarea name="comments" id="comments" rows="4" placeholder="e.g. 24/7 access, evening yoga classes, more kettlebells..."></textarea>
 
-  <button type="submit">Submit</button>
+  <button type="submit">Submit Feedback</button>
 </form>
+
+</body>
+</html>
 
 <script>
 
 // the address which you will attach here will be generated in the Google Apps Script
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxlFlOZM1VHawSFEWp54fBVBTP6E-bQ_5hoK710JRfC3NTRu_31u38ipzEKvQ468HOy/exec';
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxzchrQhaqM0q6hu9wSQ26Ff1uTXM26NVGDdIX9GL3hkPOyV6cfI2P07m60WuLV59hq/exec';
   const form = document.getElementById('googleForm');
 
 //When the user clicks the submit button, this function runs.
