@@ -2,86 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Jabie GYM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jabie GYM - Guest Survey</title>
   <style>
+    :root {
+      --bg-color: #121214;
+      --card-bg: #1a1a1e;
+      --accent-color: #5138ed;
+      --accent-hover: #3b28a7;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --border-color: #2e2e35;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 40px 20px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
+
     form {
-      background: #fff;
-      padding: 20px;
-      max-width: 500px;
-      margin: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: var(--card-bg);
+      padding: 35px;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-color);
     }
-    h2 {
-      margin-top: 0;
-      color: #218838;
+
+    .form-header {
       text-align: center;
+      margin-bottom: 25px;
     }
-    p {
-      text-align: center;
-      color: #555;
+
+    .form-header h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #fff, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-header p {
+      margin: 8px 0 0 0;
+      color: var(--text-muted);
       font-size: 14px;
-      margin-bottom: 20px;
     }
+
     label {
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-main);
     }
+
     input[type="text"],
     select,
     textarea {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      padding: 12px 16px;
+      margin-top: 8px;
+      border-radius: 8px;
+      background-color: #222226;
+      border: 1px solid var(--border-color);
+      color: #fff;
+      font-size: 15px;
       box-sizing: border-box;
+      transition: all 0.3s ease;
     }
+
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(81, 56, 237, 0.2);
+    }
+
+    /* Style the dropdown options for dark mode compatibility */
+    select option {
+      background: var(--card-bg);
+      color: #fff;
+    }
+
     fieldset {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: #222226;
     }
-    fieldset label {
-      display: inline-block;
+
+    legend {
+      font-weight: 600;
+      font-size: 14px;
+      padding: 0 10px;
+      color: var(--text-muted);
+    }
+
+    .radio-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
       margin-top: 5px;
-      margin-right: 15px;
-      font-weight: normal;
-      cursor: pointer;
     }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: normal;
+      font-size: 14px;
+      transition: background 0.2s ease;
+    }
+
+    .radio-label:hover {
+      background: #2e2e35;
+    }
+
+    .radio-label input[type="radio"] {
+      margin-right: 10px;
+      accent-color: var(--accent-color);
+    }
+
     button {
-      display: block;
       width: 100%;
-      margin-top: 20px;
-      padding: 12px 20px;
-      background: #28a745;
+      margin-top: 30px;
+      padding: 14px;
+      background: var(--accent-color);
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 8px;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(81, 56, 237, 0.3);
+      transition: all 0.2s ease;
     }
+
     button:hover {
-      background: #218838;
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 15px rgba(81, 56, 237, 0.4);
+    }
+
+    button:active {
+      transform: translateY(1px);
     }
   </style>
 </head>
 <body>
 
-<form id="healthFairForm">
-  <h2>Jabie GYM</h2>
-  <p>Help us tailor our summer classes! Take 30 seconds to fill out this quick survey.</p>
+<form id="googleForm">
+  <div class="form-header">
+    <h2>Jabie GYM</h2>
+    <p>We value your feedback. Let us know how we can improve.</p>
+  </div>
 
-  <label for="name">Full Name</label>
-  <input type="text" name="name" id="name" placeholder="e.g. Jabie" required>
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" placeholder="Your full name" required>
 
   <label for="gender">Gender</label>
   <select name="gender" id="gender">
@@ -91,40 +187,47 @@
   </select>
 
   <fieldset>
-    <legend><strong>Age Group</strong></legend>
-    <label><input type="radio" name="ageGroup" value="Under 18"> Under 18</label>
-    <label><input type="radio" name="ageGroup" value="18-30"> 18-30</label>
-    <label><input type="radio" name="ageGroup" value="31-50"> 31-50</label>
-    <label><input type="radio" name="ageGroup" value="51+"> 51+</label>
+    <legend>Age Group</legend>
+    <div class="radio-group">
+      <label class="radio-label"><input type="radio" name="ageGroup" value="Under 18"> Under 18</label>
+      <label class="radio-label"><input type="radio" name="ageGroup" value="18-30"> 18-30</label>
+      <label class="radio-label"><input type="radio" name="ageGroup" value="31-50"> 31-50</label>
+      <label class="radio-label"><input type="radio" name="ageGroup" value="51+"> 51+</label>
+    </div>
   </fieldset>
 
-  <label for="comments">What classes or gym features would you like to see?</label>
-  <textarea name="comments" id="comments" rows="4" placeholder="e.g. 24/7 access, evening yoga classes, more kettlebells..."></textarea>
+  <label for="comments">Comments</label>
+  <textarea name="comments" id="comments" rows="4" placeholder="Share your suggestions, feature requests, or workout goals..."></textarea>
 
-  <button type="submit">Submit Feedback</button>
+  <button type="submit">Submit Survey</button>
 </form>
 
-</body>
-</html>
-
 <script>
-
-// the address which you will attach here will be generated in the Google Apps Script
   const scriptURL = 'https://script.google.com/macros/s/AKfycbwXzwyQvNDndai89FlawvNjq2yeTlcj8t57s4tKh9z4v9xBht_jjuDeDC9BpOEHTI54/exec';
   const form = document.getElementById('googleForm');
 
-//When the user clicks the submit button, this function runs.
   form.addEventListener('submit', e => {
-    e.preventDefault(); //This stops the browser’s default action of reloading 
+    e.preventDefault();
+    
+    // Quick UX tweak: visual indicator that things are processing
+    const submitBtn = form.querySelector('button');
+    const originalText = submitBtn.innerText;
+    submitBtn.innerText = "Submitting...";
+    submitBtn.disabled = true;
+
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => {
         alert("Form submitted successfully!");
         form.reset();
       })
-      .catch(error => alert('Error!', error.message));
+      .catch(error => alert('Error!', error.message))
+      .finally(() => {
+        // Reset button state
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+      });
   });
 </script>
 
 </body>
 </html>
-
